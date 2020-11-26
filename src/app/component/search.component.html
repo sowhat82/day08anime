@@ -1,0 +1,43 @@
+<br>
+
+<button type="submit" class="btn btn-primary float-right" (click) = "backToSearchList()" >Back</button>
+<br>
+
+<form [formGroup] = "searchForm">
+    <div class="form-group">
+      <h6>
+        <label for="Search Text">Search Text</label>
+      </h6>
+      <input formControlName="q" type="text" class="form-control" id="q" aria-describedby="emailHelp">
+    </div>
+
+    Genre
+    <div class="form-check">
+        <input formControlName="genre" class="form-check-input" type="radio" name="genre" id="anime" value="anime" checked>
+        <label class="form-check-label" for="anime">
+          Anime
+        </label>
+    </div>
+    <div class="form-check">
+        <input formControlName="genre" class="form-check-input" type="radio" name="genre" id="manga" value="manga">
+        <label class="form-check-label" for="manga">
+          Manga
+        </label>
+    </div>
+<br>
+
+  <div class="container">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary" (click) = "save()" [disabled] = "searchForm.invalid">Save</button>
+        </div>
+        <div class="col-6">
+
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary float-right" (click) = "gotoResults()" [disabled] = "searchForm.invalid">Search</button>
+        </div>
+    </div>
+  </div>
+
+</form>
