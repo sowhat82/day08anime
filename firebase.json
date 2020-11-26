@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/day08anime",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

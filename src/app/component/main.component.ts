@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
@@ -14,13 +14,14 @@ export class MainComponent implements OnInit {
     path: '/assets/motorcycle.json',
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private ngzone: NgZone) { }
 
   ngOnInit(): void {
   }
 
   loopComplete(){
-    this.router.navigate(['/searchlist'])
+    this.ngzone.run(() =>this.router.navigate(['/searchlist']) )
+    
   }
 
 }

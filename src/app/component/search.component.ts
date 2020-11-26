@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
 
   // search directly from API
   gotoResults(){
-    
+
     //route to results page with 2 params
     this.router.navigate(['/search',this.searchForm.value.genre, this.searchForm.value.q])
 

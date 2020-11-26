@@ -6,17 +6,20 @@
 <h5>
     Search results for {{genre}} / {{q}}
 </h5>
-
-<div *ngFor = "let r of results">
+<br><hr>
+<div *ngFor = "let r of results; let idx = index">
     <div class="row">
-        <div class="col-4 d-flex justify-content-center">
+        <div class="col-8 d-flex justify-content-center">
             <img class="img-fluid img-thumbnail rounded" src="{{ r.image_url }}">
         </div>
         <div class="col-8">
-            <h3>{{ r.title }}</h3>
-            <p class="lead">
+            <h6>{{ r.title }}</h6>
+            <p class="">
                 Synopsis: {{ r.synopsis }}
-            </p>    
+            </p>
+            <button class="float-right" *ngIf = "canShare" (click) = shareThis(idx)>Share</button>
+            <!-- <button class="float-right" (click) = shareThis(idx)>Share</button> -->
+<br><br><hr>
         </div>
     </div>
 </div> 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
-
+import { NgNavigatorShareService } from 'ng-navigator-share';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -15,9 +16,17 @@ export class ResultsComponent implements OnInit {
   results =[]
   genre = '';
   q = '';
-  constructor(private activatedroute: ActivatedRoute, private http: HttpClient, router: Router) { }
+  canShare = false
+ 
+  constructor(private activatedroute: ActivatedRoute, private http: HttpClient, router: Router, private webShare: NgNavigatorShareService) {
 
+     }
+
+    
+  
   async ngOnInit(): Promise<void> {
+
+    this.canShare = this.webShare.canShare()
 
     //extract params
      this.genre = this.activatedroute.snapshot.params['genre']  
@@ -32,6 +41,16 @@ export class ResultsComponent implements OnInit {
     // to extract array from API result
     this.results = this.result['results']
 
+  }
+
+  shareThis(idx: number){
+  
+    const r = this.results[idx]
+    this.webShare.share({
+    title: r['title'],
+    text: r['synopsis'],
+    url: r['image_url']
+  })
   }
 
 }

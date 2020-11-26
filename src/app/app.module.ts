@@ -14,6 +14,8 @@ import player from 'lottie-web';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { database } from './database.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
     { path: '', component: MainComponent },
@@ -41,6 +43,7 @@ export function playerFactory() {
     LottieModule.forRoot({ player: playerFactory }),
      ReactiveFormsModule, FormsModule, BrowserAnimationsModule,
      HttpClientModule,
+     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [database],
   bootstrap: [AppComponent]
